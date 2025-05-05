@@ -23,6 +23,6 @@ public class PlayerManager : MonoBehaviour
             Axis.Normalize();
         }
 
-        Rigidbody.MovePosition(transform.position + Axis * Time.deltaTime);
+        Rigidbody.MovePosition(transform.position + Axis * Time.deltaTime * Speed);
     }
 }
