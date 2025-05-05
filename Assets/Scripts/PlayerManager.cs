@@ -52,7 +52,12 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            var newHolyBall = Instantiate(HolyBall, transform.position, Quaternion.identity);
+            Vector3 mousePosition = Input.mousePosition;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            worldPosition.z = 0;
+            Vector3 positionRelative = worldPosition - transform.position;
+            positionRelative.Normalize();
+            var newHolyBall = Instantiate(HolyBall, transform.position + positionRelative, Quaternion.identity);
             Destroy(newHolyBall, 3f);
         }
     }
