@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     public float Speed;
     public Rigidbody2D Rigidbody;
+
+    private bool viradoParaDireita = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +26,27 @@ public class PlayerManager : MonoBehaviour
         }
 
         Rigidbody.MovePosition(transform.position + Axis * Time.deltaTime * Speed);
+
+        Virar();
+    }
+
+        void Virar()
+    {
+        float entradaMovimento = Input.GetAxis("Horizontal");
+        if(entradaMovimento > 0 && !viradoParaDireita)
+        {
+            FliparPersonagem();
+        }else if (entradaMovimento < 0 && viradoParaDireita)
+        {
+            FliparPersonagem();
+        }
+    }
+
+    void FliparPersonagem()
+    {
+        viradoParaDireita = !viradoParaDireita;
+        Vector3 escalaLocal = transform.localScale;
+        escalaLocal.x *= -1;
+        transform.localScale = escalaLocal;
     }
 }
