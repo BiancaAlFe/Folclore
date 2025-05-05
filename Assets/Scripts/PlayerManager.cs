@@ -58,6 +58,11 @@ public class PlayerManager : MonoBehaviour
             Vector3 positionRelative = worldPosition - transform.position;
             positionRelative.Normalize();
             var newHolyBall = Instantiate(HolyBall, transform.position + positionRelative, Quaternion.identity);
+            float angle = Mathf.Atan2(positionRelative.y, positionRelative.x) * Mathf.Rad2Deg;
+            newHolyBall.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            var newHolyBallScript = newHolyBall.GetComponent<HolyBall>();
+            newHolyBallScript.Direction = positionRelative;
+            newHolyBallScript.Speed = 1f; // TODO
             Destroy(newHolyBall, 3f);
         }
     }
