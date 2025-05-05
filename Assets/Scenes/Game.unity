@@ -270,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   Rigidbody: {fileID: 0}
+  HolyBall: {fileID: 7243851409664573682, guid: 4afe514b0c34c274aad6668a38dc8424, type: 3}
 --- !u!4 &506047412
 Transform:
   m_ObjectHideFlags: 0

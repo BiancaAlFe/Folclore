@@ -6,8 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public float Speed;
     public Rigidbody2D Rigidbody;
-
-    private bool viradoParaDireita = true;
+    public GameObject HolyBall;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +15,13 @@ public class PlayerManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        Move();
+        Flip();
+        CheckShot();
+    }
+
+    void Move()
     {
         float XAxis = Input.GetAxis("Horizontal");
         float YAxis = Input.GetAxis("Vertical");
@@ -26,27 +32,28 @@ public class PlayerManager : MonoBehaviour
         }
 
         Rigidbody.MovePosition(transform.position + Axis * Time.deltaTime * Speed);
-
-        Virar();
     }
 
-        void Virar()
+    void Flip()
     {
-        float entradaMovimento = Input.GetAxis("Horizontal");
-        if(entradaMovimento > 0 && !viradoParaDireita)
+        float XAxis = Input.GetAxis("Horizontal");
+        Vector3 localScale = transform.localScale;
+        if (XAxis > 0)
         {
-            FliparPersonagem();
-        }else if (entradaMovimento < 0 && viradoParaDireita)
+            localScale.x = 1;
+        } else if (XAxis < 0)
         {
-            FliparPersonagem();
+            localScale.x = -1;
         }
+        transform.localScale = localScale;
     }
 
-    void FliparPersonagem()
+    void CheckShot()
     {
-        viradoParaDireita = !viradoParaDireita;
-        Vector3 escalaLocal = transform.localScale;
-        escalaLocal.x *= -1;
-        transform.localScale = escalaLocal;
+        if (Input.GetButtonDown("Fire1"))
+        {
+            var newHolyBall = Instantiate(HolyBall, transform.position, Quaternion.identity);
+            Destroy(newHolyBall, 3f);
+        }
     }
 }
