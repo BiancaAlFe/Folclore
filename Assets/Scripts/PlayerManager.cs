@@ -62,7 +62,6 @@ public class PlayerManager : MonoBehaviour
             newHolyBall.transform.rotation = Quaternion.Euler(0f, 0f, angle);
             var newHolyBallScript = newHolyBall.GetComponent<HolyBall>();
             newHolyBallScript.Direction = positionRelative;
-            newHolyBallScript.Speed = 1f; // TODO
             Destroy(newHolyBall, 3f);
         }
     }
