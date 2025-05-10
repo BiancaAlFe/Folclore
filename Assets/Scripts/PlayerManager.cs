@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     public float Speed;
     public Rigidbody2D Rigidbody;
     public GameObject HolyBall;
+    public string TargetTag;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +63,7 @@ public class PlayerManager : MonoBehaviour
             newHolyBall.transform.rotation = Quaternion.Euler(0f, 0f, angle);
             var newHolyBallScript = newHolyBall.GetComponent<HolyBall>();
             newHolyBallScript.Direction = positionRelative;
+            newHolyBallScript.TargetTag = TargetTag;
             Destroy(newHolyBall, 3f);
         }
     }
