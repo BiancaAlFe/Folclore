@@ -5,8 +5,8 @@ using UnityEngine;
 public class HolyBall : MonoBehaviour
 {
     public Vector3 Direction;
-    public float Speed;
-    public string TargetTag;
+    public float Speed, Damage;
+    public List<string> TargetTag;
     Animator Animator;
     // Start is called before the first frame update
     void Start()
@@ -27,19 +27,20 @@ public class HolyBall : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        foreach (var tag in TargetTag)
         {
-            transform.position = collision.ClosestPoint(transform.position);
-            Speed = 0f;
-            Animator.SetTrigger("Explode");
-            Destroy(gameObject, 0.5f);
-        }
-        if (collision.gameObject.tag == TargetTag)
-        {
-            transform.position = collision.ClosestPoint(transform.position);
-            Speed = 0f;
-            Animator.SetTrigger("Explode");
-            Destroy(gameObject, 0.5f);
+            if (collision.gameObject.tag == tag)
+            {
+                transform.position = collision.ClosestPoint(transform.position);
+                Speed = 0f;
+                Animator.SetTrigger("Explode");
+                Destroy(gameObject, 0.5f);
+                CombatEntity targetCombatEntity = collision.gameObject.GetComponent<CombatEntity>();
+                if (targetCombatEntity != null)
+                {
+                    targetCombatEntity.TakeDamage(Damage);
+                }
+            }
         }
     }
 }

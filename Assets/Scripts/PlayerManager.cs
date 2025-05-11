@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float Speed;
+    public float Speed, Damage;
     public Rigidbody2D Rigidbody;
     public GameObject HolyBall;
-    public string TargetTag;
+    public List<string> TargetTag;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +64,7 @@ public class PlayerManager : MonoBehaviour
             var newHolyBallScript = newHolyBall.GetComponent<HolyBall>();
             newHolyBallScript.Direction = positionRelative;
             newHolyBallScript.TargetTag = TargetTag;
+            newHolyBallScript.Damage = Damage;
             Destroy(newHolyBall, 3f);
         }
     }
