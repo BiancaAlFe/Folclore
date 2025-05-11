@@ -155,6 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fc03fd1f6c5b64bb82ef73ff22f5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Direction: {x: 0, y: 0, z: 0}
+  Player: {fileID: 0}
+  CastPosition: {x: 0, y: 0, z: 0}
   Speed: 3
-  TargetTag: 
+  Damage: 10
+  TargetTag:
+  - Wall
+  - Enemy
+  Direction: {x: 0, y: 0, z: 0}
+  CastDistance: 0.5

@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HolyBall : MonoBehaviour
+public class HolyBall : SpellScript
 {
     public Vector3 Direction;
-    public float Speed, Damage;
-    public List<string> TargetTag;
+    public float CastDistance;
     Animator Animator;
     // Start is called before the first frame update
     void Start()
@@ -42,5 +41,14 @@ public class HolyBall : MonoBehaviour
                 }
             }
         }
+    }
+
+    public override void Cast()
+    {
+        Direction = (CastPosition - Player.transform.position).normalized;
+        transform.position = Player.transform.position + Direction * CastDistance;
+        float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        Destroy(this.gameObject, 3f);
     }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float Speed, Damage;
+    public float Speed;
     public Rigidbody2D Rigidbody;
-    public GameObject HolyBall;
-    public List<string> TargetTag;
+    public List<int> Spells;
+    public SpellListSO SpellList;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,12 @@ public class PlayerManager : MonoBehaviour
     {
         Move();
         Flip();
-        CheckShot();
+        //CheckShot();
+        if (Input.GetButtonDown("Fire1")) CastSpell(Spells[0]);
+        if (Input.GetButtonDown("Fire2")) CastSpell(Spells[0]);
+        if (Input.GetKeyDown(KeyCode.Q)) CastSpell(Spells[0]);
+        if (Input.GetKeyDown(KeyCode.E)) CastSpell(Spells[0]);
+        if (Input.GetKeyDown(KeyCode.R)) CastSpell(Spells[0]);
     }
 
     void Move()
@@ -49,23 +54,21 @@ public class PlayerManager : MonoBehaviour
         transform.localScale = localScale;
     }
 
-    void CheckShot()
+    void CastSpell(int spellIndex)
     {
-        if (Input.GetButtonDown("Fire1"))
+        foreach (var spell in SpellList.SpellList)
         {
-            Vector3 mousePosition = Input.mousePosition;
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            worldPosition.z = 0;
-            Vector3 positionRelative = worldPosition - transform.position;
-            positionRelative.Normalize();
-            var newHolyBall = Instantiate(HolyBall, transform.position + positionRelative, Quaternion.identity);
-            float angle = Mathf.Atan2(positionRelative.y, positionRelative.x) * Mathf.Rad2Deg;
-            newHolyBall.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-            var newHolyBallScript = newHolyBall.GetComponent<HolyBall>();
-            newHolyBallScript.Direction = positionRelative;
-            newHolyBallScript.TargetTag = TargetTag;
-            newHolyBallScript.Damage = Damage;
-            Destroy(newHolyBall, 3f);
+            if (spell.Id == spellIndex)
+            {
+                var newSpell = Instantiate(spell.SpellPrefab).GetComponent<SpellScript>();
+                newSpell.Player = gameObject;
+                Vector3 mousePosition = Input.mousePosition;
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+                worldPosition.z = 0;
+                newSpell.CastPosition = worldPosition;
+                newSpell.Cast();
+                break;
+            }
         }
     }
 }
