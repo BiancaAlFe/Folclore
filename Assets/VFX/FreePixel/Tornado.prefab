@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7243851409664573682
+--- !u!1 &318320991646617395
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1779441939801078157}
-  - component: {fileID: 948153316697281602}
-  - component: {fileID: 8577127079470611400}
-  - component: {fileID: -4447579184329968373}
-  - component: {fileID: 5654697707779918764}
+  - component: {fileID: 491734292338757210}
+  - component: {fileID: 1853627774855983280}
+  - component: {fileID: 8879048343736319567}
+  - component: {fileID: 3837891936787520329}
+  - component: {fileID: 5899141976571951744}
   m_Layer: 0
-  m_Name: HolyBall
+  m_Name: Tornado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1779441939801078157
+--- !u!4 &491734292338757210
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243851409664573682}
+  m_GameObject: {fileID: 318320991646617395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -35,13 +35,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &948153316697281602
+--- !u!212 &1853627774855983280
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243851409664573682}
+  m_GameObject: {fileID: 318320991646617395}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,17 +87,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8577127079470611400
+--- !u!95 &8879048343736319567
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243851409664573682}
+  m_GameObject: {fileID: 318320991646617395}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 984e7044e6ee7e3429f1b277e134e582, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0778a9bcd45bce346bf70210d9483d07, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -108,13 +108,13 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &-4447579184329968373
+--- !u!58 &3837891936787520329
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243851409664573682}
+  m_GameObject: {fileID: 318320991646617395}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -142,26 +142,27 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &5654697707779918764
+  m_Radius: 1
+--- !u!114 &5899141976571951744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243851409664573682}
+  m_GameObject: {fileID: 318320991646617395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6fc03fd1f6c5b64bb82ef73ff22f5ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 664c9032d8f47224fb7a9789453e2f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   CastPosition: {x: 0, y: 0, z: 0}
-  Speed: 3
-  Damage: 10
+  Speed: 0
+  Damage: 3
   TargetTag:
-  - Wall
   - Enemy
   Direction: {x: 0, y: 0, z: 0}
-  Offset: {x: 0, y: 0.75, z: 0}
-  CastDistance: 0.25
+  CastDistance: 0
+  DamageCooldown: 0.5
+  DamageCounter: 0
+  Duration: 5

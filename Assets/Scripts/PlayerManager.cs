@@ -21,10 +21,10 @@ public class PlayerManager : MonoBehaviour
         Flip();
         //CheckShot();
         if (Input.GetButtonDown("Fire1")) CastSpell(Spells[0]);
-        if (Input.GetButtonDown("Fire2")) CastSpell(Spells[0]);
-        if (Input.GetKeyDown(KeyCode.Q)) CastSpell(Spells[0]);
-        if (Input.GetKeyDown(KeyCode.E)) CastSpell(Spells[0]);
-        if (Input.GetKeyDown(KeyCode.R)) CastSpell(Spells[0]);
+        if (Input.GetButtonDown("Fire2")) CastSpell(Spells[1]);
+        if (Input.GetKeyDown(KeyCode.Q)) CastSpell(Spells[2]);
+        if (Input.GetKeyDown(KeyCode.E)) CastSpell(Spells[3]);
+        if (Input.GetKeyDown(KeyCode.R)) CastSpell(Spells[4]);
     }
 
     void Move()

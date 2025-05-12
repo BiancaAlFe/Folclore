@@ -15,3 +15,7 @@ MonoBehaviour:
   SpellList:
   - Id: 0
     SpellPrefab: {fileID: 7243851409664573682, guid: 4afe514b0c34c274aad6668a38dc8424, type: 3}
+  - Id: 1
+    SpellPrefab: {fileID: 318320991646617395, guid: a27ff202c69b19544852443c962efee9, type: 3}
+  - Id: 2
+    SpellPrefab: {fileID: 318320991646617395, guid: 0c982e02064cac049b58114dfe2519e1, type: 3}

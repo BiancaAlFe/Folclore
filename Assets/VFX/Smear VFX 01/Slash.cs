@@ -2,26 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HolyBall : SpellScript
+public class Slash : SpellScript
 {
     public Vector3 Direction, Offset;
     public float CastDistance;
-    Animator Animator;
     // Start is called before the first frame update
     void Start()
     {
-        Animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-    }
-
-    void Move()
-    {
-        transform.position += Direction * Time.deltaTime * Speed;
+        
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -30,10 +24,6 @@ public class HolyBall : SpellScript
         {
             if (collision.gameObject.tag == tag)
             {
-                transform.position = collision.ClosestPoint(transform.position);
-                Speed = 0f;
-                Animator.SetTrigger("Explode");
-                Destroy(gameObject, 0.5f);
                 CombatEntity targetCombatEntity = collision.gameObject.GetComponent<CombatEntity>();
                 if (targetCombatEntity != null)
                 {
@@ -49,6 +39,6 @@ public class HolyBall : SpellScript
         transform.position = Player.transform.position + Offset + Direction * CastDistance;
         float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        Destroy(this.gameObject, 3f);
+        Destroy(this.gameObject, 0.5f);
     }
 }

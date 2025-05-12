@@ -376,7 +376,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &375274550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,7 +601,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &506047411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,14 +615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
-  Damage: 10
-  CastDistance: 0
   Rigidbody: {fileID: 0}
-  HolyBall: {fileID: 7243851409664573682, guid: 4afe514b0c34c274aad6668a38dc8424, type: 3}
-  TargetTag:
-  - Enemy
-  - Enemy
-  Spells: 0000000000000000000000000000000000000000
+  Spells: 0100000002000000000000000000000000000000
   SpellList: {fileID: 11400000, guid: 10364382955ea8a4c8f81157474ca6e6, type: 2}
 --- !u!4 &506047412
 Transform:
